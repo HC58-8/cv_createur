@@ -4,7 +4,7 @@ include_once '../dossierPHP/doconnexion.php';
 include_once '../dossierPHP/user.php';
 
 // Include la classe CV
-include_once '../PHP/cv.php';
+include_once 'cv.php';
 
 // Vérifie si les données du formulaire de connexion ont été soumises
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitConnexion'])) {
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitConnexion'])) {
     // Vérifier les informations de connexion
     if ($user->connexion($email, $mot_de_passe)) {
         echo "Connexion réussie.";
-        header("Location: ../HTML/cv.html");
+        header("Location: ../dossierHTML/cv.html");
         exit();
         
         // Rediriger ou afficher une page de succès de connexion
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitCV'])) {
 
     // Insertion du CV dans la base de données
     if($cv->create()) {
-        header("Location: ../PHP/res.php");
+        header("Location: res.php");
         exit();
     } else {
         echo "Erreur lors de la création du CV.";
